@@ -19,6 +19,15 @@ class NonTenderResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Non Tender';
+
+    public static function getModelLabel(): string
+    {
+        return 'Data Non Tender'; // Singular name
+    }
+    
+    protected static ?string $pluralModelLabel = 'Non Tender';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -32,8 +41,8 @@ class NonTenderResource extends Resource
                             ->label('Tanggal dibuat')
                             ->required()
                             ->default(now())
-                            ->disabled(fn (string $operation): bool => $operation === 'edit')
-                            ->dehydrated()
+                            ->readOnly()  // Readonly di semua operasi (create & edit)
+                            ->dehydrated() // Data tetap masuk ke database
                             ->native(false)
                             ->displayFormat('d/m/Y'),
 

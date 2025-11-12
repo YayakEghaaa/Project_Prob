@@ -19,6 +19,15 @@ class SwakelolaResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Swakelola';
+
+    public static function getModelLabel(): string
+    {
+        return 'Data Swakelola'; // Singular name
+    }
+    
+    protected static ?string $pluralModelLabel = 'Swakelola';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -32,8 +41,8 @@ class SwakelolaResource extends Resource
                             ->label('Tanggal dibuat')
                             ->required()
                             ->default(now())
-                            ->disabled(fn (string $operation): bool => $operation === 'edit')
-                            ->dehydrated()
+                            ->readOnly()  // Readonly di semua operasi (create & edit)
+                            ->dehydrated() // Data tetap masuk ke database
                             ->native(false)
                             ->displayFormat('d/m/Y'),
 

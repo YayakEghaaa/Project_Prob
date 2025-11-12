@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('kode_rup');
 
             // 3. Pagu RUP (nominal)
-            $table->decimal('pagu_rup', 20, 2)->nullable();
+            $table->bigInteger('pagu_rup');
 
             // 4. Kode Paket
             $table->string('kode_paket')->nullable();

@@ -29,4 +29,8 @@ class epurcasing extends Model
         'serah_terima',
         'penilaian_kinerja',
     ];
+
+    protected $casts = [
+        'pagu_rup' => 'integer',
+    ];
 }

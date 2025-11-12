@@ -19,6 +19,15 @@ class PengadaanDaruratResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Pengadaan Darurat';
+
+    public static function getModelLabel(): string
+    {
+        return 'Data Pengadaan Darurat'; // Singular name
+    }
+    
+    protected static ?string $pluralModelLabel = 'Pengadaan Darurat';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -32,8 +41,8 @@ class PengadaanDaruratResource extends Resource
                             ->label('Tanggal dibuat')
                             ->required()
                             ->default(now())
-                            ->disabled(fn (string $operation): bool => $operation === 'edit')
-                            ->dehydrated()
+                            ->readOnly()  // Readonly di semua operasi (create & edit)
+                            ->dehydrated() // Data tetap masuk ke database
                             ->native(false)
                             ->displayFormat('d/m/Y'),
 

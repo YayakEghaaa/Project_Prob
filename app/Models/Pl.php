@@ -36,7 +36,7 @@ class Pl extends Model
     protected $casts = [
         'tanggal_pls' => 'date',
         'kode_rup' => 'integer',
-        'pagu_rup' => 'decimal:2',
+        'pagu_rup' => 'integer',
         'nilai_kontrak' => 'decimal:2',
         'nilai_pdn_tkdn_impor' => 'decimal:2',
         'nilai_umk' => 'decimal:2',

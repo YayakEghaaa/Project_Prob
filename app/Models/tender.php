@@ -28,4 +28,7 @@ class tender extends Model
         'serah_terima_pekerjaan',
         'penilaian_kinerja',
     ];
+    protected $casts = [
+        'pagu_rup' => 'integer',
+    ];
 }

@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->date('tanggal_dibuat');
                 $table->string('nama_pekerjaan');
                 $table->string('kode_rup');
-                $table->decimal('pagu_rup', 20, 2)->nullable();
+                $table->bigInteger('pagu_rup');
                 $table->string('kode_paket')->nullable();
                 $table->enum('jenis_pengadaan', [
                     'Barang',

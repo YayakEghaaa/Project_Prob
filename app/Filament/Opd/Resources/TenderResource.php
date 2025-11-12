@@ -18,10 +18,16 @@ class TenderResource extends Resource
     protected static ?string $model = tender::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    
+
+    public static function getModelLabel(): string
+    {
+        return 'Data Tender'; // Singular name
+    }
+
     protected static ?string $navigationLabel = 'Tender';
     
-    protected static ?string $pluralModelLabel = 'Data tender';
+    protected static ?string $pluralModelLabel = 'Tender';
+
 
     public static function form(Form $form): Form
     {
@@ -33,11 +39,11 @@ class TenderResource extends Resource
                 Forms\Components\Section::make('Informasi Dasar')
                     ->schema([
                         Forms\Components\DatePicker::make('tanggal_dibuat')
-                            ->label('Tanggal')
+                            ->label('Tanggal dibuat')
                             ->required()
                             ->default(now())
-                            ->disabled(fn (string $operation): bool => $operation === 'edit')
-                            ->dehydrated()
+                            ->readOnly()  // Readonly di semua operasi (create & edit)
+                            ->dehydrated() // Data tetap masuk ke database
                             ->native(false)
                             ->displayFormat('d/m/Y'),
 

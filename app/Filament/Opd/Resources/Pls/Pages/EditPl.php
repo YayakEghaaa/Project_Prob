@@ -12,12 +12,15 @@ class EditPl extends EditRecord
 {
     protected static string $resource = PlResource::class;
 
-    protected function getHeaderActions(): array
+    // ✅ TAMBAHKAN INI - Redirect setelah edit
+    protected function getRedirectUrl(): string
     {
-        return [
-            DeleteAction::make(),
-            ForceDeleteAction::make(),
-            RestoreAction::make(),
-        ];
+        return PlResource::getUrl('index');
+    }
+
+    // ✅ OPSIONAL: Notifikasi sukses edit
+    protected function getSavedNotificationTitle(): ?string
+    {
+        return 'Data PL berhasil diperbarui';
     }
 }

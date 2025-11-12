@@ -20,8 +20,13 @@ class EpurcasingResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     
     protected static ?string $navigationLabel = 'Epurcasing';
+
+    public static function getModelLabel(): string
+    {
+        return 'Data Epurcasing'; // Singular name
+    }
     
-    protected static ?string $pluralModelLabel = 'Data Epurcasing';
+    protected static ?string $pluralModelLabel = 'Epurcasing';
 
     public static function form(Form $form): Form
     {
@@ -33,11 +38,11 @@ class EpurcasingResource extends Resource
                         ->default(auth()->id())
                         ->required(),
                         Forms\Components\DatePicker::make('tanggal_dibuat')
-                            ->label('Tanggal')
+                            ->label('Tanggal dibuat')
                             ->required()
                             ->default(now())
-                            ->disabled(fn (string $operation): bool => $operation === 'edit')
-                            ->dehydrated()
+                            ->readOnly()  // Readonly di semua operasi (create & edit)
+                            ->dehydrated() // Data tetap masuk ke database
                             ->native(false)
                             ->displayFormat('d/m/Y'),
 

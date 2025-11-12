@@ -22,4 +22,7 @@ class swakelola extends Model
         'nilai_kontrak',
         'realisasi',
     ];
+    protected $casts = [
+        'pagu_rup' => 'integer',
+    ];
 }

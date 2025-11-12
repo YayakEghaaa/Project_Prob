@@ -26,4 +26,8 @@ class nontender extends Model
         'nilai_umk',
         'realisasi',
     ];
+
+    protected $casts = [
+        'pagu_rup' => 'integer',
+    ];
 }

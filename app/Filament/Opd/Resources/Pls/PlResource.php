@@ -17,6 +17,11 @@ class PlResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     
     protected static ?string $navigationLabel = 'PL';
+
+    public static function getModelLabel(): string
+    {
+        return 'Data PL'; // Singular name
+    }
     
     protected static ?string $pluralModelLabel = 'Data PL';
 
@@ -30,11 +35,11 @@ class PlResource extends Resource
                 Forms\Components\Section::make('Informasi Dasar')
                     ->schema([
                         Forms\Components\DatePicker::make('tanggal_dibuat')
-                            ->label('Tanggal')
+                            ->label('Tanggal dibuat')
                             ->required()
                             ->default(now())
-                            ->disabled(fn (string $operation): bool => $operation === 'edit')
-                            ->dehydrated()
+                            ->readOnly()  // Readonly di semua operasi (create & edit)
+                            ->dehydrated() // Data tetap masuk ke database
                             ->native(false)
                             ->displayFormat('d/m/Y'),
 

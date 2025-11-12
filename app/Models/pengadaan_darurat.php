@@ -27,4 +27,8 @@ class pengadaan_darurat extends Model
         'nilai_umk',
         'realisasi',
     ];
+
+    protected $casts = [
+        'pagu_rup' => 'integer',
+    ];
 }

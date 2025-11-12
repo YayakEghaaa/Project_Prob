@@ -10,10 +10,15 @@ class EditTender extends EditRecord
 {
     protected static string $resource = TenderResource::class;
 
-    protected function getHeaderActions(): array
+    // ✅ TAMBAHKAN INI - Redirect setelah edit
+    protected function getRedirectUrl(): string
     {
-        return [
-            Actions\DeleteAction::make(),
-        ];
+        return PlResource::getUrl('index');
+    }
+
+    // ✅ OPSIONAL: Notifikasi sukses edit
+    protected function getSavedNotificationTitle(): ?string
+    {
+        return 'Data PL berhasil diperbarui';
     }
 }
